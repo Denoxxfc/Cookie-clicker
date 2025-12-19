@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Cookie Clicker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        .cookie {
+            width: 200px;
+            height: 200px;
+            background: #f8b500;
+            border-radius: 50%;
+            margin: 30px auto;
+            cursor: pointer;
+            font-size: 60px;
+            line-height: 200px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .stats {
+            font-size: 24px;
+            margin: 20px;
+        }
+        .upgrade {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍪 ПеченькоКликер</h1>
+    <div class="stats" id="cookies">0 печенек</div>
+    <div class="cookie" onclick="clickCookie()">🍪</div>
+    <div class="stats" id="cpc">1 печенька за клик</div>
+    
+    <h2>Улучшения:</h2>
+    <div class="upgrade" onclick="buyUpgrade(1)">
+        <h3>Усиленный клик (100)</h3>
+        <p>+1 печенька за клик</p>
+    </div>
+    
+    <script>
+        let cookies = 0;
+        let cookiesPerClick = 1;
+        
+        function clickCookie() {
+            cookies += cookiesPerClick;
+            updateDisplay();
+        }
+        
+        function buyUpgrade(type) {
+            if(type === 1 && cookies >= 100) {
+                cookies -= 100;
+                cookiesPerClick += 1;
+                updateDisplay();
+            }
+        }
+        
+        function updateDisplay() {
+            document.getElementById('cookies').textContent = cookies + ' печенек';
+            document.getElementById('cpc').textContent = cookiesPerClick + ' печенька за клик';
+        }
+    </script>
+</body>
+</html>
